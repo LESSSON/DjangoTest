@@ -1,11 +1,10 @@
-# lib/templates/lib/detail.html
 <h1>Book List</h1>
 <table>
     <tr>
-        <td>name</td>
-        <td>author</td>
-        <td>pub_house</td>
-        <td>pub_date</td>
+        <td>书名</td>
+        <td>作者</td>
+        <td>出版社</td>
+        <td>出版时间</td>
     </tr>
 {% for book in book_list.all %}
     <tr>
@@ -17,3 +16,10 @@
 {% endfor %}
 </table>
 
+<form action="{% url 'lib:addBook' %}" method="post" name="addBook">
+        {% csrf_token %}
+        <p><span>书名：</span><input type="text"  name="name"></p>
+        <p><span>作者：</span><input type="text"  name="author"></p>
+        <p><span>出版社：</span><input type="text"  name="pub_house"></p>
+        <input type="submit" value="添加">
+</form>
